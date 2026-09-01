@@ -1,0 +1,22 @@
+{
+  // A static site on Cloudflare Workers: `out/` (the Next export) is served as
+  // assets, and there is NO Worker code. Every request is answered from the
+  // export, and an unmatched path gets the site's own 404.html.
+  //
+  // `not_found_handling` applies precisely BECAUSE there is no `main`. The
+  // moment Worker code is added, unmatched paths fall through to it instead
+  // and the Worker has to serve 404.html itself — that is the shape the
+  // database-hosting phase will need, and it is kept, tested, in the main
+  // repo's deploy spike.
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  // Rename to your project. This becomes the `<name>.<account>.workers.dev` host.
+  "name": "misaki-studio-site",
+  "compatibility_date": "2026-09-01",
+
+  "assets": {
+    // `next build` (output: "export") writes here.
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}

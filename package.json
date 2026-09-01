@@ -1,0 +1,36 @@
+{
+  "name": "misaki-studio-cloudflare",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --webpack -p 8810",
+    "seo-files": "node ./scripts/seo-files.mjs",
+    "build": "npm run seo-files && next build --webpack",
+    "preview": "wrangler dev",
+    "check": "wrangler deploy --dry-run --outdir .wrangler/dry-run",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "misaki-studio-internal": "0.1.76",
+    "autoprefixer": "10.4.2",
+    "dotenv": "17.2.3",
+    "next": "16.3.3",
+    "postcss": "8.5.26",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "sass": "1.42.1",
+    "styled-components": "6.1.19"
+  },
+  "devDependencies": {
+    "@types/color-convert": "2.0.3",
+    "@types/lodash": "4.14.202",
+    "@types/node": "25.0.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
+    "typescript": "5.9.3",
+    "wrangler": "4.128.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
